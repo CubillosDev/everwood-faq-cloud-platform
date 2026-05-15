@@ -4,7 +4,7 @@
 // Cambia BASE_URL al desplegar.
 // =============================================
 
-const BASE_URL = 'https://everwood-faq-cloud-platform.onrender.com';
+const BASE_URL = 'https://everwood-faq-cloud-platform.onrender.com/api';
 
 async function request(endpoint, options = {}) {
   const res = await fetch(`${BASE_URL}${endpoint}`, options);
