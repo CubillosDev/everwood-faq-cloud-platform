@@ -9,11 +9,10 @@ const faqRoutes = require('./routes/faqRoutes');
 const app = express();
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
-  methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-  allowedHeaders: ['Content-Type'],
+  origin: '*', // Permite cualquier origen
+  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
 app.use(express.json());
 
 // Health check
