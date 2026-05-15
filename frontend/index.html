@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Everwood — Cargar archivo</title>
+  <title>Everwood - Cargar archivo</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -18,14 +18,24 @@
   <button class="nav-btn">Iniciar sesión</button>
 </nav>
 
-<main>
-  <div class="card">
-    <div class="card-title">↑ Cargar conversación</div>
-    <div class="card-sub">Sube un archivo CSV, JSON o TXT exportado de WhatsApp para almacenarlo en la nube.</div>
+<main class="home-main">
+  <section class="hero">
+    <h1>Carga y analiza tus <span>conversaciones de WhatsApp</span></h1>
+    <p>Sube tus historiales, revisa cada conversación y genera FAQs automáticamente para optimizar tu atención al cliente.</p>
+  </section>
+
+  <div class="card upload-card">
+    <div class="step-heading">
+      <div class="step-number">1</div>
+      <div>
+        <div class="card-title">Sube tu archivo de conversaciones</div>
+        <div class="card-sub">Formatos aceptados: CSV, JSON o TXT exportado de WhatsApp</div>
+      </div>
+    </div>
 
     <div class="drop-zone" id="drop-zone">
       <input type="file" id="file-input" accept=".csv,.json,.txt">
-      <div class="drop-icon">☁</div>
+      <div class="drop-icon">↑</div>
       <div class="drop-title">Arrastra tu archivo aquí</div>
       <div class="drop-sub">o haz clic para seleccionar desde tu equipo</div>
       <div class="format-row">
@@ -40,8 +50,14 @@
     <div id="progress-wrap" style="display:none"></div>
   </div>
 
-  <div class="card" id="meta-section" style="display:none">
-    <div class="card-title">Metadatos de la carga</div>
+  <div class="card upload-card" id="meta-section" style="display:none">
+    <div class="step-heading">
+      <div class="step-number">2</div>
+      <div>
+        <div class="card-title">Completa los metadatos de la carga</div>
+        <div class="card-sub">Estos datos quedarán registrados en el historial de conversaciones.</div>
+      </div>
+    </div>
     <div class="form-grid">
       <div class="form-field">
         <label>Responsable / Equipo *</label>
