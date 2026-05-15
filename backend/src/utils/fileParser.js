@@ -17,7 +17,7 @@ function parseFile(buffer, extension) {
       }
       return { type: 'json', messages: [], raw: content, metadata: {} };
     } catch {
-      throw Object.assign(new Error('El archivo JSON no tiene un formato válido'), { status: 400 });
+      throw Object.assign(new Error('El archivo JSON no tiene un formato válido.'), { status: 400 });
     }
   }
 
@@ -31,7 +31,7 @@ function parseFile(buffer, extension) {
     return { type: 'txt', messages: lines, raw: content };
   }
 
-  throw Object.assign(new Error('Extensión no soportada'), { status: 400 });
+  throw Object.assign(new Error('Formato no soportado. Usa CSV, JSON o TXT.'), { status: 400 });
 }
 
 module.exports = { parseFile };

@@ -12,13 +12,13 @@ const { getExtension } = require('../utils/helpers');
 async function handleUpload(req, res, next) {
   try {
     if (!req.file) {
-      return res.status(400).json({ ok: false, error: 'No se seleccionó ningún archivo.' });
+      return res.status(400).json({ ok: false, error: 'Selecciona un archivo antes de iniciar la carga.' });
     }
 
     const { responsible, status, observations } = req.body;
 
     if (!responsible || responsible.trim() === '') {
-      return res.status(400).json({ ok: false, error: 'El campo responsable es requerido.' });
+      return res.status(400).json({ ok: false, error: 'Ingresa el responsable o equipo encargado de esta carga.' });
     }
 
     const { buffer, originalname, mimetype, size } = req.file;
@@ -53,7 +53,7 @@ async function handleUpload(req, res, next) {
 
     res.status(201).json({
       ok: true,
-      message: 'Archivo subido exitosamente.',
+      message: 'Archivo guardado correctamente.',
       data: uploadRecord,
     });
   } catch (err) {

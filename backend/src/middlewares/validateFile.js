@@ -13,7 +13,7 @@ const upload = multer({
     if (ALLOWED_EXTENSIONS.includes(ext)) {
       cb(null, true);
     } else {
-      const err = new Error(`Formato no permitido. Solo se aceptan: ${ALLOWED_EXTENSIONS.join(', ')}`);
+      const err = new Error('Formato no permitido. Carga un archivo CSV, JSON o TXT.');
       err.status = 400;
       cb(err, false);
     }

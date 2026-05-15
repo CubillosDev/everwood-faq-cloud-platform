@@ -20,8 +20,13 @@ async function uploadFile(buffer, originalName, mimeType) {
     });
 
   if (error) {
+    const isRlsError = /row-level security/i.test(error.message);
+    const message = isRlsError
+      ? 'Supabase Storage bloqueó la carga por RLS. Agrega SUPABASE_SERVICE_ROLE_KEY en backend/.env o ejecuta backend/supabase-policies.sql en Supabase SQL Editor.'
+      : `Error al subir el archivo a la nube: ${error.message}`;
+
     throw Object.assign(
-      new Error(`Error al subir el archivo a la nube: ${error.message}`),
+      new Error(message),
       { status: 500 }
     );
   }
