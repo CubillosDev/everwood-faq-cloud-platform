@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everwood — FAQs</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .chip-row { display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px }
+    .chip { padding:5px 13px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border2);background:var(--surface2);color:var(--text2);transition:all var(--transition) }
+    .chip.active { background:var(--yellow);color:#111;border-color:var(--yellow) }
+    .summary-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo-text">ever<br>wod<span class="logo-dot">.</span></div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Cargar</a>
+    <a href="historial.html" class="nav-link">Historial</a>
+    <a href="faqs.html" class="nav-link active">FAQs</a>
+  </div>
+  <button class="nav-btn">Iniciar sesión</button>
+</nav>
+
+<main>
+  <div class="summary-grid">
+    <div class="stat-card">
+      <div class="stat-label">Aprobadas</div>
+      <div class="stat-val" id="count-approved" style="color:#4ADE80">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Rechazadas</div>
+      <div class="stat-val" id="count-rejected" style="color:var(--red)">0</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Pendientes</div>
+      <div class="stat-val" id="count-pending" style="color:var(--yellow)">0</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">FAQs sugeridas por el sistema</div>
+    <div class="card-sub">Revisa y valida cada sugerencia generada a partir de las conversaciones cargadas.</div>
+
+    <div class="chip-row">
+      <span class="chip active" onclick="filterCategory(this, '')">Todas</span>
+      <span class="chip" onclick="filterCategory(this, 'envio')">Envíos</span>
+      <span class="chip" onclick="filterCategory(this, 'pago')">Pagos</span>
+      <span class="chip" onclick="filterCategory(this, 'producto')">Productos</span>
+      <span class="chip" onclick="filterCategory(this, 'devolucion')">Devoluciones</span>
+      <span class="chip" onclick="filterCategory(this, 'soporte')">Soporte</span>
+    </div>
+
+    <div id="faq-list"></div>
+  </div>
+</main>
+
+<div id="toast">
+  <div class="ti-dot"></div>
+  <span id="toast-msg"></span>
+</div>
+
+<script type="module" src="js/faqs.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "canal": "WhatsApp",
+    "fecha_inicio": "2024-03-15",
+    "fecha_fin": "2024-03-15",
+    "agente": "Soporte Everwod",
+    "cliente": "+57 310 845 2210",
+    "duracion_minutos": 12,
+    "resuelto": true
+  },
+  "mensajes": [
+    { "id": 1, "rol": "cliente", "nombre": "Carlos M.", "hora": "10:04 a.m.", "texto": "Hola buenos días, quería preguntar cuánto tiempo demora el envío a Medellín 🙏" },
+    { "id": 2, "rol": "agente",  "nombre": "Everwod",   "hora": "10:05 a.m.", "texto": "¡Hola Carlos! Buen día 😊 Los envíos a Medellín generalmente demoran entre 3 y 5 días hábiles. Si tu pedido supera $200.000 el envío es completamente gratis." },
+    { "id": 3, "rol": "cliente", "nombre": "Carlos M.", "hora": "10:06 a.m.", "texto": "Qué bien! Y si el pedido llega dañado qué hago?" },
+    { "id": 4, "rol": "agente",  "nombre": "Everwod",   "hora": "10:07 a.m.", "texto": "No te preocupes 🙌 Todos nuestros productos tienen garantía. Si llega con algún defecto, tienes 15 días para reportarlo y nosotros gestionamos el cambio o reembolso sin costo adicional." },
+    { "id": 5, "rol": "cliente", "nombre": "Carlos M.", "hora": "10:09 a.m.", "texto": "Perfecto, y aceptan pago contra entrega?" },
+    { "id": 6, "rol": "agente",  "nombre": "Everwod",   "hora": "10:10 a.m.", "texto": "¡Sí! Aceptamos pago contra entrega en las principales ciudades: Bogotá, Medellín, Cali, Barranquilla y Bucaramanga. También puedes pagar con tarjeta de crédito/débito o transferencia bancaria 💳" },
+    { "id": 7, "rol": "cliente", "nombre": "Carlos M.", "hora": "10:11 a.m.", "texto": "Genial, muchas gracias! Ya voy a hacer el pedido entonces 😄" },
+    { "id": 8, "rol": "agente",  "nombre": "Everwod",   "hora": "10:12 a.m.", "texto": "Con gusto Carlos! Si tienes alguna duda más no dudes en escribirnos. ¡Que disfrutes tu compra! 🎉" }
+  ]
+}

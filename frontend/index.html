@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everwood — Cargar archivo</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo-text">ever<br>wod<span class="logo-dot">.</span></div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link active">Cargar</a>
+    <a href="historial.html" class="nav-link">Historial</a>
+    <a href="faqs.html" class="nav-link">FAQs</a>
+  </div>
+  <button class="nav-btn">Iniciar sesión</button>
+</nav>
+
+<main>
+  <div class="card">
+    <div class="card-title">↑ Cargar conversación</div>
+    <div class="card-sub">Sube un archivo CSV, JSON o TXT exportado de WhatsApp para almacenarlo en la nube.</div>
+
+    <div class="drop-zone" id="drop-zone">
+      <input type="file" id="file-input" accept=".csv,.json,.txt">
+      <div class="drop-icon">☁</div>
+      <div class="drop-title">Arrastra tu archivo aquí</div>
+      <div class="drop-sub">o haz clic para seleccionar desde tu equipo</div>
+      <div class="format-row">
+        <span class="fmt">JSON</span>
+        <span class="fmt">CSV</span>
+        <span class="fmt">TXT</span>
+      </div>
+    </div>
+
+    <div id="file-row-wrap"></div>
+    <div id="alert-wrap"></div>
+    <div id="progress-wrap" style="display:none"></div>
+  </div>
+
+  <div class="card" id="meta-section" style="display:none">
+    <div class="card-title">Metadatos de la carga</div>
+    <div class="form-grid">
+      <div class="form-field">
+        <label>Responsable / Equipo *</label>
+        <input type="text" id="meta-resp" placeholder="Ej. Soporte al cliente">
+      </div>
+      <div class="form-field">
+        <label>Estado</label>
+        <select id="meta-status">
+          <option value="completado">Completado</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="procesando">Procesando</option>
+        </select>
+      </div>
+      <div class="form-field full">
+        <label>Observaciones</label>
+        <textarea id="meta-obs" placeholder="Ej. Conversaciones del primer trimestre 2024..."></textarea>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-primary" id="btn-upload" disabled>↑ Subir a la nube</button>
+      <button class="btn-secondary" onclick="resetForm()">Limpiar</button>
+    </div>
+  </div>
+
+  <div id="preview-panel" style="display:none"></div>
+</main>
+
+<div id="toast">
+  <div class="ti-dot"></div>
+  <span id="toast-msg"></span>
+</div>
+
+<script type="module" src="js/upload.js"></script>
+</body>
+</html>

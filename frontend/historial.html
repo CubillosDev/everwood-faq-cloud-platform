@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Everwood — Historial</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo-text">ever<br>wod<span class="logo-dot">.</span></div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Cargar</a>
+    <a href="historial.html" class="nav-link active">Historial</a>
+    <a href="faqs.html" class="nav-link">FAQs</a>
+  </div>
+  <button class="nav-btn">Iniciar sesión</button>
+</nav>
+
+<main>
+  <div class="card">
+    <div class="card-title">Historial de cargas</div>
+    <div class="card-sub">Todos los archivos subidos a la nube, con sus metadatos y estado.</div>
+
+    <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+      <input type="text" id="search-input" placeholder="Buscar por nombre o responsable..." style="flex:1;min-width:200px">
+      <select id="filter-status" style="width:auto">
+        <option value="">Todos los estados</option>
+        <option value="completado">Completado</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="procesando">Procesando</option>
+        <option value="error">Error</option>
+      </select>
+      <select id="filter-type" style="width:auto">
+        <option value="">Todos los tipos</option>
+        <option value="csv">CSV</option>
+        <option value="json">JSON</option>
+        <option value="txt">TXT</option>
+      </select>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Archivo</th>
+            <th>Tipo</th>
+            <th>Tamaño</th>
+            <th>Fecha</th>
+            <th>Responsable</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+
+    <div id="empty-state" class="empty" style="display:none">
+      <div class="empty-icon">📂</div>
+      <div class="empty-title">Sin registros</div>
+      <p>Sube tu primer archivo en la sección Cargar.</p>
+    </div>
+  </div>
+</main>
+
+<!-- DETAIL MODAL -->
+<div id="detail-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:100;align-items:center;justify-content:center">
+  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:var(--radius);padding:28px;width:500px;max-width:92vw">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <div style="font-size:17px;font-weight:700">Detalle de carga</div>
+      <button onclick="closeDetail()" style="background:none;border:none;color:var(--text2);font-size:22px;cursor:pointer;line-height:1">×</button>
+    </div>
+    <div id="modal-content"></div>
+    <div style="margin-top:20px;text-align:right">
+      <button class="btn-secondary" onclick="closeDetail()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast">
+  <div class="ti-dot"></div>
+  <span id="toast-msg"></span>
+</div>
+
+<script type="module" src="js/historial.js"></script>
+</body>
+</html>
