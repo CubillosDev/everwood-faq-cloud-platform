@@ -1,0 +1,7 @@
+fecha,hora,rol,nombre,texto
+2026-05-10,09:00,cliente,Laura Gomez,"Hola, quiero saber si hacen envios a Medellin"
+2026-05-10,09:02,agente,Camila,"Si, hacemos envios nacionales. A Medellin tarda de 2 a 4 dias habiles."
+2026-05-10,09:04,cliente,Laura Gomez,"Perfecto. Puedo pagar por transferencia?"
+2026-05-10,09:05,agente,Camila,"Si, aceptamos transferencia, tarjeta y pago contra entrega en algunas ciudades."
+2026-05-10,09:07,cliente,Laura Gomez,"Gracias, tambien quiero saber si tienen garantia."
+2026-05-10,09:08,agente,Camila,"Todos los productos tienen garantia por defectos de fabrica."

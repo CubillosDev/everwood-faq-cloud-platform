@@ -44,6 +44,11 @@ cp .env.example .env
 # Edita .env con tus credenciales de Supabase
 ```
 
+Para que el backend pueda subir archivos a Supabase Storage sin chocar con RLS,
+usa `SUPABASE_SERVICE_ROLE_KEY` en `backend/.env`. Si prefieres usar una clave
+anon/public, ejecuta las políticas de `backend/supabase-policies.sql` en el SQL
+Editor de Supabase.
+
 ### 3. Crear las tablas en Supabase
 
 Ejecuta este SQL en el SQL Editor de Supabase:
@@ -128,16 +133,9 @@ Abre `frontend/index.html` en tu navegador o usa Live Server (VS Code).
 
 ## Prueba rápida
 
-Usa el archivo `conversacion_prueba.json` incluido en la raíz para probar la carga y vista previa.
+Usa los archivos incluidos en la raíz para probar el flujo:
 
----
-
-## Evidencias requeridas
-
-- [ ] Captura de la interfaz principal
-- [ ] Captura del proceso de carga
-- [ ] Captura del archivo en Supabase Storage
-- [ ] Captura de la tabla `uploads` en Supabase DB
-- [ ] Captura del historial de cargas
-- [ ] URL pública del sistema desplegado
-- [ ] Enlace del repositorio
+- `conversacion_prueba.json`: carga válida JSON.
+- `conversacion_prueba.csv`: carga válida CSV.
+- `conversacion_prueba.txt`: carga válida TXT.
+- `conversacion_formato_no_permitido.xlsx`: validación de formato no permitido.

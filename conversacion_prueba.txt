@@ -1,0 +1,6 @@
+[2026-05-11 14:10] Cliente - Andres: Hola, necesito informacion sobre disponibilidad de madera para un escritorio.
+[2026-05-11 14:12] Agente - Paula: Hola Andres, tenemos madera pino, roble y nogal disponible.
+[2026-05-11 14:13] Cliente - Andres: Cuanto tarda la entrega en Bogota?
+[2026-05-11 14:15] Agente - Paula: La entrega en Bogota tarda entre 1 y 2 dias habiles.
+[2026-05-11 14:17] Cliente - Andres: Puedo cambiar el producto si llega danado?
+[2026-05-11 14:18] Agente - Paula: Si, puedes solicitar cambio o garantia si reportas la novedad con fotos.

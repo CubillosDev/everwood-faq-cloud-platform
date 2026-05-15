@@ -1,0 +1,2 @@
+Este archivo tiene extension .xlsx a proposito.
+Debe fallar en la validacion porque el sistema solo permite CSV, JSON o TXT.

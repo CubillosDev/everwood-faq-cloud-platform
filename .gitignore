@@ -27,3 +27,6 @@ build/
 # Logs
 logs/
 *.log
+
+# Internal delivery notes
+evidencias_entrega_1.md
