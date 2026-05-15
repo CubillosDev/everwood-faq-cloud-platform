@@ -30,8 +30,8 @@ function renderFaqs() {
 
   faqList.innerHTML = pending.map(f => `
     <div class="faq-card" id="faq-${f.id}">
-      <div class="faq-q">❓ ${f.question}</div>
-      <div class="faq-a">${f.answer}</div>
+      <div class="faq-q">❓ ${escapeHTML(f.question)}</div>
+      <div class="faq-a">${escapeHTML(f.answer)}</div>
       <div class="conf-bar">
         <span class="conf-label">Confianza ${Math.round(f.confidence * 100)}%</span>
         <div class="conf-track">
@@ -39,7 +39,7 @@ function renderFaqs() {
         </div>
       </div>
       <div class="faq-footer">
-        <span class="badge badge-info">${f.category || 'general'}</span>
+        <span class="badge badge-info">${escapeHTML(f.category || 'general')}</span>
         <div class="faq-actions">
           <button class="btn-approve" onclick="handleFaq('${f.id}', 'aprobada')">✓ Aprobar</button>
           <button class="btn-reject" onclick="handleFaq('${f.id}', 'rechazada')">✕ Rechazar</button>
@@ -83,6 +83,15 @@ function showToast(msg) {
   document.getElementById('toast-msg').textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function escapeHTML(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
 }
 
 loadFaqs();

@@ -40,17 +40,17 @@ function renderTable() {
     <tr>
       <td>
         <div class="file-cell">
-          <div class="file-badge ft-${u.file_type}">${u.file_type.toUpperCase()}</div>
+          <div class="file-badge ft-${safeFileType(u.file_type)}">${safeFileType(u.file_type).toUpperCase()}</div>
           <div>
-            <div style="font-size:13px;font-weight:600">${u.file_name}</div>
+            <div style="font-size:13px;font-weight:600">${escapeHTML(u.file_name)}</div>
             <div style="font-size:11px;color:var(--text2)">${formatSize(u.file_size)}</div>
           </div>
         </div>
       </td>
-      <td style="color:var(--text2)">${u.file_type.toUpperCase()}</td>
+      <td style="color:var(--text2)">${safeFileType(u.file_type).toUpperCase()}</td>
       <td style="color:var(--text2)">${formatSize(u.file_size)}</td>
       <td style="color:var(--text2)">${formatDate(u.uploaded_at)}</td>
-      <td>${u.responsible}</td>
+      <td>${escapeHTML(u.responsible)}</td>
       <td>${statusBadge(u.status)}</td>
       <td>
         <button class="btn-secondary btn-sm" onclick="openDetail('${u.id}')">Ver</button>
@@ -67,15 +67,15 @@ window.openDetail = async function (id) {
     const u = await getConversationById(id);
     content.innerHTML = `
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:13px">
-        <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Archivo</div><div style="font-weight:600">${u.file_name}</div></div>
-        <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Tipo</div><div>${u.file_type.toUpperCase()}</div></div>
+        <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Archivo</div><div style="font-weight:600">${escapeHTML(u.file_name)}</div></div>
+        <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Tipo</div><div>${safeFileType(u.file_type).toUpperCase()}</div></div>
         <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Tamaño</div><div>${formatSize(u.file_size)}</div></div>
         <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Fecha</div><div>${formatDate(u.uploaded_at)}</div></div>
-        <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Responsable</div><div>${u.responsible}</div></div>
+        <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Responsable</div><div>${escapeHTML(u.responsible)}</div></div>
         <div><div style="font-size:11px;color:var(--text2);margin-bottom:3px;text-transform:uppercase;letter-spacing:.06em">Estado</div><div>${statusBadge(u.status)}</div></div>
       </div>
-      ${u.observations ? `<div style="margin-top:14px;padding:12px;background:var(--bg3);border-radius:var(--radius-sm)"><div style="font-size:11px;color:var(--text2);margin-bottom:4px">OBSERVACIONES</div><div style="font-size:13px">${u.observations}</div></div>` : ''}
-      ${u.public_url ? `<div style="margin-top:14px"><a href="${u.public_url}" target="_blank" style="color:var(--yellow);font-size:13px">↗ Ver archivo en la nube</a></div>` : ''}`;
+      ${u.observations ? `<div style="margin-top:14px;padding:12px;background:var(--bg3);border-radius:var(--radius-sm)"><div style="font-size:11px;color:var(--text2);margin-bottom:4px">OBSERVACIONES</div><div style="font-size:13px">${escapeHTML(u.observations)}</div></div>` : ''}
+      ${safeUrl(u.public_url) ? `<div style="margin-top:14px"><a href="${safeUrl(u.public_url)}" target="_blank" rel="noopener noreferrer" style="color:var(--yellow);font-size:13px">↗ Ver archivo en la nube</a></div>` : ''}`;
   } catch (err) {
     content.innerHTML = `<p style="color:var(--red)">Error: ${err.message}</p>`;
   }
@@ -110,7 +110,30 @@ function statusBadge(s) {
     procesando: 'badge-pend',
     error: 'badge-err',
   };
-  return `<span class="badge ${map[s] || 'badge-info'}">${s}</span>`;
+  return `<span class="badge ${map[s] || 'badge-info'}">${escapeHTML(s || 'desconocido')}</span>`;
+}
+
+function escapeHTML(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+function safeFileType(type) {
+  return ['csv', 'json', 'txt'].includes(type) ? type : 'txt';
+}
+
+function safeUrl(url) {
+  if (!url) return '';
+  try {
+    const parsed = new URL(url);
+    return ['http:', 'https:'].includes(parsed.protocol) ? escapeHTML(parsed.href) : '';
+  } catch {
+    return '';
+  }
 }
 
 loadData();

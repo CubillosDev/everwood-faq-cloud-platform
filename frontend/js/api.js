@@ -8,7 +8,7 @@ const BASE_URL = 'http://localhost:3000/api';
 
 async function request(endpoint, options = {}) {
   const res = await fetch(`${BASE_URL}${endpoint}`, options);
-  const json = await res.json();
+  const json = await parseJson(res);
   if (!res.ok) throw new Error(json.error || 'Error en la petición');
   return json.data;
 }
@@ -16,7 +16,7 @@ async function request(endpoint, options = {}) {
 // UPLOAD
 export async function uploadFile(formData) {
   const res = await fetch(`${BASE_URL}/upload`, { method: 'POST', body: formData });
-  const json = await res.json();
+  const json = await parseJson(res);
   if (!res.ok) throw new Error(json.error || 'Error al subir el archivo');
   return json.data;
 }
@@ -50,4 +50,12 @@ export async function updateFaq(id, status, answer = null) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ status, answer }),
   });
+}
+
+async function parseJson(res) {
+  try {
+    return await res.json();
+  } catch {
+    return {};
+  }
 }
